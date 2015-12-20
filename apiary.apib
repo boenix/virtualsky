@@ -3,36 +3,35 @@ HOST: http://virtualskyapis.com/doc/
 
 # VirtualSKY SDK
 
-VirtualSKY SDK is a Unity plugin that enabling Virtual Reality developers to place 10-30 second interstitial advertiser experiences at natural breaks in their Unity project.
+VirtualSKY SDK is a Unity plugin that enables Virtual Reality developers to place 10-30 second interstitial advertiser experiences at natural breaks in their Unity project.
 
 
 # Features
 +  Load ad from local stored (offline ad)
 +  Load ad with specific local stored ad filename, streaming, and from downloaded file (offline and online ad)
-+  Tracking head movement and orientation
 +  Ad events callback
-+  Pause ad while ad is playing (optional)
++  Pause ad while the ad is playing (optional)
 +  Pause game and show an ad
 +  Request ad from server and play it later when needed
-+  Tracking head movement
++  Tracking for head movement and orientation
 +  Serialization data of head movement
 +  Tracked data stored as JSON format
 +  Playback tracked data (for developer and getting insight)
-+  Every ad that requested is unique depends on the client preferences
++  Every ad that is requested is unique depending on client preferences
 
 # Requirements and supports
 +  Android 4.0 or latest
 +  iOS 6.0 or latest
 +  MP4 or WEBM version support up to 1920 * 1080.
-+  Android latest device supports up to 4k. 
-+  iOS  latest device is support up to 2560 * 1440. 
-+  It also supports StreamingAssets, external storage, and streaming services. 
++  Android latest device supports up to 4k 
++  iOS  latest device is support up to 2560 * 1440 
++  Supports StreamingAssets, external storage, and streaming services. 
 +  Android streaming support list: http, HLS (http live streaming),rtsp 
 +  iOS streaming support list: http,HLS (http live streaming)
 
 
 # How to use
-To make your game shows 360 ad:
+To show 360 ads in your game:
 
 1. [Download](https://virtualskymedia-sandbox.s3.amazonaws.com/sdk/version_1.0.0/VirtualSkySDK%201.0.0.unitypackage) the latest SDK
 
@@ -63,7 +62,7 @@ And please make these happen:
     
     ![Alt text](https://virtualskymedia-sandbox.s3.amazonaws.com/doc/HowToUse/addlayer.PNG)
 
-2. There are 2 gameobjects that will be added or should be exist in your scene
+2. There are 2 gameobjects that will be added or should exist in your scene
     
     ![Alt text](https://virtualskymedia-sandbox.s3.amazonaws.com/doc/HowToUse/virtualskyobj.PNG)
 
@@ -75,7 +74,7 @@ And please make these happen:
 ## VirtualSky
 
 ### LoadAd
-Load an ad with spesific name from availabe ads list or automaticly based on index of ad list in Streaming asset folder
+Load an ad with a specific name from availabe ads list or automaticly based on index of ad list in Streaming asset folder
 
 `LoadAd(bool autoPlay = true, bool trackHead = true)`
 
@@ -87,7 +86,7 @@ Pause running ad
 `PauseAd()`
 
 ### SwitchState
-Switch current state automaticly or set manually
+Switch current state automatically or set manually
 
 `SwitchState(bool autoPlay = true)` 
 
@@ -99,7 +98,7 @@ Play the requested ad
 `PlayRequestAd()`
 
 ### RequestAd
-Request and download an ad from server database or given url. The downloaded ad will be stored on local storage
+Request and download an ad from the server database or given url. The downloaded ad will be stored on local storage
 
 `RequestAd(string url)`
 
@@ -208,7 +207,7 @@ Download an ad from given ad class or url
         ]
 
 # Ad Events [/event]
-There are a number of important events in the lifecycle of interstitial ad: downloading, playing, ending, and so on. 
+There are a number of important events in the lifecycle of an interstitial ad: downloading, playing, ending, and so on. 
 The VirtualSKY SDK allows developers to listen for these through the AdListener list. This guide shows you how to use AdListener for your 360 interstitial ads.
 
 ## Using AdListener
