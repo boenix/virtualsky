@@ -1,12 +1,14 @@
 FORMAT: 1A
-HOST: http://virtualskyapis.com/doc/
+HOST: http://virtualskyapis.com/doc
 
-# VirtualSKY SDK
+# VirtualSKY API
+
+## Introduction
 
 VirtualSKY SDK is a Unity plugin that enables Virtual Reality developers to place 10-30 second interstitial advertiser experiences at natural breaks in their Unity project.
 
 
-# Features
+## Features
 +  Load an ad that is stored locally (offline ad)
 +  Load an ad that is stored locally with a specific filename, streaming, and from downloaded file (offline and online ad)
 +  Ad events callback
@@ -19,7 +21,7 @@ VirtualSKY SDK is a Unity plugin that enables Virtual Reality developers to plac
 +  Playback tracked data (for developer and getting insight)
 +  Every ad that is requested is unique depending on client preferences
 
-# Requirements and supports
+## Requirements and supports
 +  Android 4.0 or latest
 +  iOS 6.0 or latest
 +  MP4 or WEBM version support up to 1920 * 1080.
@@ -30,10 +32,14 @@ VirtualSKY SDK is a Unity plugin that enables Virtual Reality developers to plac
 +  iOS streaming support list: http,HLS (http live streaming)
 
 
-# How to use
+## How to use
 To show 360 ads in your game:
 
-1. [Download](https://virtualskymedia-sandbox.s3.amazonaws.com/sdk/version_1.0.0/VirtualSkySDK%201.0.0.unitypackage) the latest SDK
+<br />
+
+1. <a href="https://virtualskymedia-sandbox.s3.amazonaws.com/sdk/version_1.0.0/VirtualSkySDK%201.0.0.unitypackage" id="vsky-button">Download the latest SDK</a>
+
+<br />
 
 2. Import the package to your Unity game/project
     
@@ -42,6 +48,8 @@ To show 360 ads in your game:
 3. Add a "VirtualSkySDK" gameobject to your scene:
     
     ![Alt text](https://virtualskymedia-sandbox.s3.amazonaws.com/doc/HowToUse/howToUse2.PNG)
+
+::: note
 
 + To add to the Hierarchy (Complete package)
     + Select: Menu Bar > VirtualSky > Create Complete Virtual Sky Object  (Recommended)
@@ -56,87 +64,70 @@ To show 360 ads in your game:
 + To add UI event system:
     + Select: Menu Bar > VirtualSky > Create Virtual Sky EventSystem
 
+:::
+
 And please make these happen:
 
-1. Add "Virtual" layer at field 30 on the menu bar Project Settings > Tags and Layers
+1. [ ]  Add "Virtual" layer at field 30 on the menu bar Project Settings > Tags and Layers
     
     ![Alt text](https://virtualskymedia-sandbox.s3.amazonaws.com/doc/HowToUse/addlayer.PNG)
 
-2. There are 2 gameobjects that will be added or should exist in your scene
+2. [ ]  There are 2 gameobjects that will be added or should exist in your scene
     
     ![Alt text](https://virtualskymedia-sandbox.s3.amazonaws.com/doc/HowToUse/virtualskyobj.PNG)
 
-2. Assign every variable field on inspector (if needed)
+3. [ ]  Assign every variable field on inspector (if needed)
 
 
-# API [/api]
+# Group API
 
-## VirtualSky
+## VirtualSky [/virtualsky]
 
-### LoadAd
+### Load Ad
 Load an ad with a specific name from availabe ads list or automaticly based on index of ad list in Streaming asset folder
 
 `LoadAd(bool autoPlay = true, bool trackHead = true)`
 
 `LoadAd(string fileName, bool autoPlay = true, bool trackHead = true)`
 
-### PauseAd
+### Pause Ad
 Pause running ad
 
 `PauseAd()`
 
-### SwitchState
+### Switch State
 Switch current state automatically or set manually
 
 `SwitchState(bool autoPlay = true)` 
 
 `SwitchState(IVirtualSky state, bool autoPlay = false)`
 
-### PlayRequestAd
+### Play Request Ad
 Play the requested ad
 
 `PlayRequestAd()`
 
-### RequestAd
+### Request Ad
 Request and download an ad from the server database or given url. The downloaded ad will be stored on local storage
 
 `RequestAd(string url)`
 
 `RequestAd()`
 
-### PlayGame
+### Play Game
 Change current state to gamestate and resume if paused
 
 `PlayGame(bool autoPlay = true)`
 
-### DownloadedAdPath
+### Downloaded Ad Path
 Get downloaded ad path name from local storage
 
 `DownloadedAdPath(int id)`
 
     return string
 
-## Toolbox.Instance
 
-### GetData
-Get user and unique ad data based on user preferences
-
-+ For login and first time only:
-
-`GetData(string newId = null, string newPassword = null)`
-
-+ For next request:
-
-`GetData()`
-
-### DownloadVideo
-Download an ad from given ad class or url
-
-`DownloadVideo(Ad ad, bool autoLoad)`
-
-`DownloadVideo(string url, bool autoLoad)`
-
-### API Sample [GET]
+### VirtualSKY Sample[GET]
 + Response 200 (application/text)
 
         [
@@ -188,8 +179,36 @@ Download an ad from given ad class or url
                 public void PlayRequestAd(id)
                 {
                     _vskyManager.LoadAd(DownloadedAdPath(id));
-                }
-                
+                } 
+            }
+        ]
+
+## Toolbox.Instance [/tool]
+
+### Get Data
+Get user and unique ad data based on user preferences
+
++ For login and first time only:
+
+`GetData(string newId = null, string newPassword = null)`
+
++ For next request:
+
+`GetData()`
+
+### Download Video
+Download an ad from given ad class or url
+
+`DownloadVideo(Ad ad, bool autoLoad)`
+
+`DownloadVideo(string url, bool autoLoad)`
+
+
+### Toolbox.Instance Sample[GET]
++ Response 200 (application/text)
+
+        [
+            {             
                 public void Login(){
                     Toolbox.Instance.GetData(1, 12345);
                 }
@@ -206,11 +225,13 @@ Download an ad from given ad class or url
             }
         ]
 
-# Ad Events [/event]
+
+# Group Ad Events
+
 There are a number of important events in the lifecycle of an interstitial ad: downloading, playing, ending, and so on. 
 The VirtualSKY SDK allows developers to listen for these through the AdListener list. This guide shows you how to use AdListener for your 360 interstitial ads.
 
-## Using AdListener
+## Using AdListener [/event]
 To use an AdListener with an VirtualSKY object, simply call the AdListener delagete method for every event you want. Here's an example using these AdListener:
 
 ### onLoaded
